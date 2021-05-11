@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Word Drop</title>
+    <style>
+        img{
+            display: none;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            color: #0f0;
+            font-size: 30px;
+            text-align:center;
+        }
+
+        canvas {
+            display: block;
+            margin: 20px auto;
+            border: 1px dashed #0f0;
+        }
+ button {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: 'Courier New';
+  color: #04f904;
+  font-size: 20px;
+  background: #000000;
+  padding: 10px 20px 10px 20px;
+  border: dotted #04f904 2px;
+  text-decoration: none;
+}
+
+button:hover {
+  background: #505659;
+  text-decoration: none;
+}
+.wordWrap{
+            border: 1px dashed #0f0;
+            width: 245px;
+            height: 45px;
+}
+h1{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: normal;
+}
+
+p{
+    margin: 0px;
+}
+#instructions{
+    font-family: 'Courier New', Courier, monospace;    
+}
+.bg {
+  background-color:#183800;
+}
+    </style>
+    <script src="game.js"></script>
+</head>
+
+<body>
+  <div style="position:absolute; top:25px; left:25px; z-index:1">
+    <canvas id="canvas" width="790" height="500"></canvas> <!-- Add abssoulte postion-->
+      <button id="buttonStart" style="position: absolute; top:240px; left:342px; cursor: pointer; display: block;" onclick="start()">Start</button>
+      <button id="buttonRefresh" style="position: absolute; top:330px; left:308px; cursor: pointer; display: none;" onclick="refreshGame()">Play Again!</button>
+      <p id="instructions"style="position: absolute; top:330px; left:12px;">Type the select word before it leaves the screen at increasing difficulty.<br> 3 Strikes and yourrr out!</p>
+      <h1 id="title"style="position: absolute; top:25px; left:235px;"> Word Drop</h1>    
+      <div class="wordWrap" style="position: absolute; top:535px; left:270px;">
+          <p class="words"></p>
+      </div>
+ </div>
+ 
+
+</body>
+
+
+</html>
+<!--
+    `+
+              -y:
+            .+h+.``                   .:oyyyo-                     ::/ymmhs/`
+         `-+syhmy+o+//.             `-ydNNNNmNh-                 -ymddNMMMMMm/
+       .+yyyyhddo-                 .+mNdhyhdmmmm-               -mMMMMMMMMMMMN+
+      .yhddhhysso/                `yss-`     `:dy`             -mMNmhsoohmmdoom-
+     `dNMNyso:-:::-               +m/o+.      `sy.             /ddhyyy//hhs:` /h
+     +mNNy                      ``do-smNo`-:..:ho`              ``/osy/`--`    -.`        o`
+    /hdNm/                     .`/y  -:-`:hdyshy:               ``  `:+:/.`    --         o+
+   -ymNNm-                    `: sy`++o::-..-oy//.              .-...:+//++.   `    .--://shs/`
+  `sdNMNd-                    .+`h+-+o/o+-`.+s+o+.                -/oys++/:/``          :+shhhy:`
+  sdNMNmd/          .         :o:hy--o/+o--syoss+                  .ossso++/++.         +y+hdhhsss
+ -NmMMMmdhds+...-::/ss///-//yo/sohNo+oo+oshysyys.                    sdmmNNmmh+`         +..hmmmm+``
+/mMMMMMMMNNmmddhhddddddhddhdNmdhhdNMMNNNmdhhhys-                     :hhdhysyy+-`-` `-+o++o++smNy/:-
++MMMMMMMMMMmNNmNmmNNmddddddNNmNmdmmMMMNddddhys.                      `osso++ssso/-             odhso
+ sMMMMMMMMMNNMMNNNMMmmddddmNmdmmmmNNNmmmdhhhyyo`                  `  `/sssso+/-                `ohdd
+  oNMMMMMMMMMMMMMMMMmmmdddNmmddmmmNNNmmhhhdmdhho/.             ```                    ` ....``://oss
+   `-/hNMMMMMMMMMMMMmmmmdmNdddddmmmddmdddmmdddhyys+`           `                     ` `..---/o++soh
+       `.:ohmNMMMMMNmmNmdNNddddmmmddmdddmddhddyyyys+:`    `                         `...---//---ssym
+              `-/hNmmmNmmMNdddmmmmdmdddddhhddhhhhhysoo+  ```       .``---:`:-.+/++++-o..--:oy+/-ydmN
+                  +mmNNmmMNmdmmmNmmmddddhhhddhdhhhhhyyy``..`    -:/`o-+s-+`:-:.:+/:++:.--:/dhs/+ymMM
+                  omNNNmmMNmmmmmNmmmdddddddmhddhhhdmdhho-.``   /..:://:/-+://o+/----.:.-:/yNmysdhmMM
+                  dNNNNmNMMmmmNNNmmNmmdddmNdmmddmNmdddmy:.`.` `s-:+-++++/-ohdNMMNy+:-:.//sdNNmhddmNM
+                 :NNNNNmNMMmmNNNNmNNNmmmmNdmNmmNmddmmdds..` . `:.+sssosdmNMMMMMys+++:-/++yyso/ `-+hN
+                 sMMMMNNNMMmNNMNmNMNNNmNNmmMNNmddmmmNNdo. ` ```/odhmNNNMNNMMMNMMMmdy-/o+os/-::     `
+                `mMMMMNNMMMmNMMNNNMMNNNNmdNMMMNmNNNNNNm.:`   -.:/hNMNNNNMNNNNMMMMMMN/oo+o+/-.
+                -MMMMMMMMMMNNMNNNMMMNNNmdNMMMNNMMNNNNNd`.`  `/y-NMMNmdhydhhmmmNNNMMMssooo/+::
+                /MMMMMMMMMMNNNNNMMMMMNNmNMMMMMMMMNNNNNd`````.oh-NNNmho+smNNssNmNMMMMhysso+o++
+               `hMMMMMMMMMMMMMMMMMMMMNNNMMMMMNNNNNNNNNh.```.-yh:dMMMNhdmNMNdNNNMMMMMdyysoyss`
+               +NMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNNNNMMMms/.-/+/dm+sNMMMMMMNMMMMMMMMMMMmyyyyhys
+     -->
